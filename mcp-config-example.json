@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "scaleway": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/absolute/path/to/scaleway-mcp-server",
+        "scaleway_server.py"
+      ],
+      "env": {
+        "SCW_ACCESS_KEY": "SCW7JHKD4NQXX6YWY5A4",
+        "SCW_SECRET_KEY": "ea079fb9-3edf-4391-a785-d29c03c7bd34",
+        "SCW_PROJECT_ID": "b6c2c4f2-4697-4927-9580-143bf8c3f588",
+        "SCW_ORGANIZATION_ID": "c5d299b8-8462-40fb-b5ae-32a8808bf394",
+        "SCW_DEFAULT_REGION": "fr-par",
+        "SCW_DEFAULT_ZONE": "fr-par-1"
+      }
+    }
+  }
+}

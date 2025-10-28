@@ -1,0 +1,40 @@
+[project]
+name = "scaleway-mcp-server"
+version = "1.0.0"
+description = "Model Context Protocol server for Scaleway infrastructure management"
+authors = [
+    {name = "Scaleway MCP Team"}
+]
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.0.0",
+    "scaleway>=2.10.0",
+    "fastapi>=0.120.0",
+    "uvicorn[standard]>=0.30.0",
+    "sse-starlette>=2.1.0",
+    "python-multipart>=0.0.9",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "httpx>=0.27.0",
+    "black>=24.0.0",
+    "isort>=5.13.0",
+    "mypy>=1.8.0",
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
