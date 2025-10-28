@@ -1,0 +1,36 @@
+name: Docker Build and Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+      
+    - name: Build Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        platforms: linux/amd64,linux/arm64
+        push: false
+        tags: scaleway-mcp-server:test
+        
+    - name: Test Docker image
+      run: |
+        docker run --rm \
+          -e SCW_ACCESS_KEY=test \
+          -e SCW_SECRET_KEY=test \
+          -e SCW_PROJECT_ID=test \
+          -e SCW_ORGANIZATION_ID=test \
+          scaleway-mcp-server:test \
+          python -c "import scaleway_http_server; print('Import successful')"
